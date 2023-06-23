@@ -7,5 +7,8 @@ Goals:
 - IdP custom claims mapping for spcific IdP integrations
 - Claims mappings for specific clients based on type of clent.
 - Use of terraform to manage the configurations.
-- Basic User roles as adjunct claims both realm-level and client level roles.
+- Basic User roles as adjunct claims both realm-level roles.
+- Showcase ability for subject to appear as provider for provider clients and patient for patient appsm, respecting privacy of claims not appropriate, through client-level attributes mappings.
+
+
 
