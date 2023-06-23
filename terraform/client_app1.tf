@@ -34,7 +34,6 @@ resource "keycloak_openid_client_optional_scopes" "client1_optional_scopes" {
     "offline_access",
     "profile",
     "microprofile-jwt",
-    "acr",
     keycloak_openid_client_scope.fhir_user_scope.name,
     keycloak_openid_client_scope.patient_all_scope.name,
     keycloak_openid_client_scope.user_all_scope.name

@@ -32,7 +32,6 @@ resource "keycloak_openid_client_optional_scopes" "client2_optional_scopes" {
     "address",
     "phone",
     "microprofile-jwt",
-    "acr",
     keycloak_openid_client_scope.fhir_user_scope.name,
     keycloak_openid_client_scope.patient_all_read_scope.name
   ]
