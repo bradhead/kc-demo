@@ -1,9 +1,9 @@
 variable "keycloak_environment" {
   type = object({
-    realm              = optional(string, "health")
+    realm              = optional(string, "poc")
     realm_display_name = optional(string, "Smart on FHIR Realm")
     custom_audience    = optional(string, "fhir-rs")
-    base_url           = optional(string, "http://localhost:8080")
+    base_url           = optional(string, "http://localhost:8081")
   })
   description = "Keycloak configuration environment"
 }
