@@ -9,9 +9,9 @@ services:
       - "CLIENT_ID=patient-app"
       - "FHIRENDPOINT_URI=http://localhost:8000/"  
       - "REDIRECT_URI=http://localhost:6201"
-      - "ISSUER_URI=http://localhost:8081/auth/realms/poc"
+      - "ISSUER_URI=http://localhost:8080/auth/realms/poc"
       - "AUDIENCE=healthcare"
-      - "LOGOUT_URI=http://localhost:8081/auth/realms/poc/protocol/openid-connect/logout?cb=none&revoke=token&revoke=token_refresh"
+      - "LOGOUT_URI=http://localhost:8080/auth/realms/poc/protocol/openid-connect/logout?cb=none&revoke=token&revoke=token_refresh"
       - "SCOPES=openid fhirUser profile patient/*.read"
       - "ENABLE_HTTPS=false"
       - "SKIP_ISSUER_CHECK=false"
@@ -19,16 +19,16 @@ services:
   provider-app-poc:
     container_name: provider-app-poc
     build:
-      context: https://github.com/omarhoblos/swiss-on-fhir.git#main   # This adds support for SMART required 'aud'
+      context: https://github.com/bradhead/swiss-on-fhir.git#provider    # This adds support for SMART required 'aud'
     ports:
       - "6200:80"
     environment:
       - "CLIENT_ID=provider-app"
       - "FHIRENDPOINT_URI=http://localhost:8000/"  
       - "REDIRECT_URI=http://localhost:6200"
-      - "ISSUER_URI=http://localhost:8081/auth/realms/poc"
+      - "ISSUER_URI=http://localhost:8080/auth/realms/poc"
       - "AUDIENCE=healthcare"
-      - "LOGOUT_URI=http://localhost:8081/auth/realms/poc/protocol/openid-connect/logout?cb=none&revoke=token&revoke=token_refresh"
+      - "LOGOUT_URI=http://localhost:8080/auth/realms/poc/protocol/openid-connect/logout?cb=none&revoke=token&revoke=token_refresh"
       - "SCOPES=openid fhirUser profile user/*.*"
       - "ENABLE_HTTPS=false"
       - "SKIP_ISSUER_CHECK=false"
