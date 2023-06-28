@@ -1,6 +1,6 @@
 resource "keycloak_user" "user1" {
   realm_id   = data.keycloak_realm.realm.id
-  username   = "doc"
+  username   = "alice"
   enabled    = true
   first_name = "Alice"
   last_name  = "Doctor"

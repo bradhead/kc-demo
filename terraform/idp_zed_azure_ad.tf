@@ -35,3 +35,15 @@ resource "keycloak_hardcoded_attribute_identity_provider_mapper" "zed_azure_idp"
     syncMode = "INHERIT"
   }
 }
+
+resource "keycloak_hardcoded_attribute_identity_provider_mapper" "zed_azure_acr" {
+  realm                   = data.keycloak_realm.realm.id
+  name                    = "acr"
+  identity_provider_alias = keycloak_oidc_identity_provider.zed_azure_ad.alias
+  attribute_name          = "acr"
+  attribute_value         = "http://nist.gov/id-proofing/level/3"
+  user_session            = true
+  extra_config = {
+    syncMode = "INHERIT"
+  }
+}
