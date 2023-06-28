@@ -11,6 +11,7 @@ resource "keycloak_user" "user1" {
     expertise          = "101##136##171",
     fhirUser           = "https://fhir.server/Practitioner/1234494959",
     qualification      = "[{ \"class\":\"MD\", \"license_id\":\"12345\", \"status\":\"active\", \"start_date\":\"20230101\", \"msp_id\":\"2292993\"} , { \"class\":\"PHARM\", \"license_id\":\"34567\", \"status\":\"active\", \"start_date\":\"20221101\", \"msp_id\":\"333995\"}  ]",
+    hdid          = "339495a393945b03939cdeaa993"
   }
   initial_password {
     value     = var.test_user_password
@@ -148,63 +149,6 @@ resource "keycloak_user_roles" "test_user4_roles" {
   ]
 }
 
-resource "keycloak_user" "test_user5" {
-  realm_id   = data.keycloak_realm.realm.id
-  username   = "test5"
-  enabled    = true
-  first_name = "Test5"
-  last_name  = "PRACTITIONER"
-  initial_password {
-    value     = var.test_user_password
-    temporary = false
-  }
-}
-
-resource "keycloak_user_roles" "test_user5_roles" {
-  realm_id = data.keycloak_realm.realm.id
-  user_id  = keycloak_user.test_user5.id
-
-  role_ids = [
-    keycloak_role.realm_role_md.id
-  ]
-}
-
-resource "keycloak_user" "test_user6" {
-  realm_id   = data.keycloak_realm.realm.id
-  username   = "test6"
-  enabled    = true
-  first_name = "Test6"
-  last_name  = "NOT-A-PRACTITIONER"
-  initial_password {
-    value     = var.test_user_password
-    temporary = false
-  }
-}
-
-resource "keycloak_user" "test_user7" {
-  realm_id   = data.keycloak_realm.realm.id
-  username   = "test7"
-  enabled    = true
-  first_name = "Test7"
-  last_name  = "MOA Not Endorsed"
-  attributes = {
-    endorser_data = ""
-  }
-  initial_password {
-    value     = var.test_user_password
-    temporary = false
-  }
-}
-
-resource "keycloak_user_roles" "test_user7_roles" {
-  realm_id = data.keycloak_realm.realm.id
-  user_id  = keycloak_user.test_user7.id
-
-  role_ids = [
-    keycloak_role.realm_role_moa.id
-  ]
-}
-
 
 resource "keycloak_group_memberships" "group_members" {
   realm_id = data.keycloak_realm.realm.id
@@ -216,10 +160,7 @@ resource "keycloak_group_memberships" "group_members" {
     keycloak_user.test_user1.username,
     keycloak_user.test_user2.username,
     keycloak_user.test_user3.username,
-    keycloak_user.test_user4.username,
-    keycloak_user.test_user5.username,
-    keycloak_user.test_user6.username,
-    keycloak_user.test_user7.username
+    keycloak_user.test_user4.username
   ]
 }
 
