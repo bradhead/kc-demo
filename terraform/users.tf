@@ -25,7 +25,8 @@ resource "keycloak_user_roles" "user1_roles" {
   user_id  = keycloak_user.user1.id
 
   role_ids = [
-    keycloak_role.realm_role_md.id
+    keycloak_role.realm_role_md.id,
+    keycloak_default_roles.default_roles.id
   ]
 }
 
@@ -56,7 +57,8 @@ resource "keycloak_user_roles" "user2_roles" {
   user_id  = keycloak_user.user2.id
 
   role_ids = [
-    keycloak_role.realm_role_moa.id
+    keycloak_role.realm_role_moa.id,
+    keycloak_default_roles.default_roles.id
   ]
 }
 
@@ -78,7 +80,8 @@ resource "keycloak_user_roles" "test_user1_roles" {
   user_id  = keycloak_user.test_user1.id
 
   role_ids = [
-    keycloak_role.realm_role_md.id
+    keycloak_role.realm_role_md.id,
+    keycloak_default_roles.default_roles.id
   ]
 }
 
@@ -104,7 +107,8 @@ resource "keycloak_user_roles" "test_user2_roles" {
   user_id  = keycloak_user.test_user2.id
 
   role_ids = [
-    keycloak_role.realm_role_moa.id
+    keycloak_role.realm_role_moa.id,
+    keycloak_default_roles.default_roles.id
   ]
 }
 
@@ -125,32 +129,10 @@ resource "keycloak_user_roles" "test_user3_roles" {
   user_id  = keycloak_user.test_user3.id
 
   role_ids = [
-    keycloak_role.realm_role_rnp.id
+    keycloak_role.realm_role_rnp.id,
+    keycloak_default_roles.default_roles.id
   ]
 }
-
-resource "keycloak_user" "test_user4" {
-  realm_id   = data.keycloak_realm.realm.id
-  username   = "test4"
-  enabled    = true
-  first_name = "Test4"
-  last_name  = "PRACTITIONER-MD"
-  initial_password {
-    value     = var.test_user_password
-    temporary = false
-  }
-}
-
-resource "keycloak_user_roles" "test_user4_roles" {
-  realm_id = data.keycloak_realm.realm.id
-  user_id  = keycloak_user.test_user4.id
-
-  role_ids = [
-    keycloak_role.realm_role_moa.id,
-    keycloak_role.realm_role_md.id
-  ]
-}
-
 
 resource "keycloak_group_memberships" "group_members" {
   realm_id = data.keycloak_realm.realm.id
@@ -161,8 +143,7 @@ resource "keycloak_group_memberships" "group_members" {
     keycloak_user.user2.username,
     keycloak_user.test_user1.username,
     keycloak_user.test_user2.username,
-    keycloak_user.test_user3.username,
-    keycloak_user.test_user4.username
+    keycloak_user.test_user3.username
   ]
 }
 
