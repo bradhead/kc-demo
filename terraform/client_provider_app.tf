@@ -81,4 +81,16 @@ resource "keycloak_openid_user_realm_role_protocol_mapper" "user_realm_role_mapp
   add_to_userinfo     = true
 }
 
+resource "keycloak_openid_user_attribute_protocol_mapper" "client1_profile" {
+  realm_id            = keycloak_openid_client.client1.realm_id
+  client_id           = keycloak_openid_client.client1.id
+  name                = "profile"
+  user_attribute      = "provider"
+  claim_name          = "profile"
+  claim_value_type    = "String"
+  add_to_id_token     = true
+  add_to_access_token = true
+  add_to_userinfo     = true
+}
+
 

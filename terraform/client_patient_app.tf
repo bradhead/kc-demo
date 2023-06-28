@@ -8,6 +8,7 @@ resource "keycloak_openid_client" "client2" {
   standard_flow_enabled        = true
   implicit_flow_enabled        = false
   direct_access_grants_enabled = false
+  consent_required             = true
   login_theme                  = var.client_app1.login_theme
   valid_redirect_uris          = var.client_app2.valid_redirects
   web_origins                  = var.client_app2.web_origins
@@ -41,6 +42,18 @@ resource "keycloak_openid_user_attribute_protocol_mapper" "client2_patient_id" {
   name                = "hdid"
   user_attribute      = "hdid"
   claim_name          = "patient_hdid"
+  claim_value_type    = "String"
+  add_to_id_token     = true
+  add_to_access_token = true
+  add_to_userinfo     = true
+}
+
+resource "keycloak_openid_user_attribute_protocol_mapper" "client2_profile" {
+  realm_id            = keycloak_openid_client.client2.realm_id
+  client_id           = keycloak_openid_client.client2.id
+  name                = "profile"
+  user_attribute      = "patient"
+  claim_name          = "profile"
   claim_value_type    = "String"
   add_to_id_token     = true
   add_to_access_token = true

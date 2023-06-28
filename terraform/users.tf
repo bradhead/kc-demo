@@ -9,9 +9,10 @@ resource "keycloak_user" "user1" {
     practitionerRole   = "doctor",
     practitionerStatus = "active",
     expertise          = "101##136##171",
-    fhirUser           = "https://fhir.server/Practitioner/1234494959",
+    patient            = "https://fhir.server/Patient/3F80F903-6465-4A01-B808-F7605E0D25A0",
+    provider           = "https://fhir.server/Provider/B3521F63-3F55-4F9F-8C1E-3DE11AAF1774",
     qualification      = "[{ \"class\":\"MD\", \"license_id\":\"12345\", \"status\":\"active\", \"start_date\":\"20230101\", \"msp_id\":\"2292993\"} , { \"class\":\"PHARM\", \"license_id\":\"34567\", \"status\":\"active\", \"start_date\":\"20221101\", \"msp_id\":\"333995\"}  ]",
-    hdid          = "339495a393945b03939cdeaa993"
+    hdid               = "339495a393945b03939cdeaa993"
   }
   initial_password {
     value     = var.test_user_password
@@ -39,7 +40,8 @@ resource "keycloak_user" "user2" {
     practitionerRole   = "moa",
     practitionerStatus = "active",
     expertise          = "S31##515##168",
-    fhirUser           = "https://fhir.server/Practitioner/012345689",
+    patient            = "https://fhir.server/Patient/CF8B30A3-A85F-4EBE-A4E3-77425084AF6E",
+    provider           = "https://fhir.server/Provider/15FEA569-BAE4-43FF-ABBF-E4171D7FF0AF",
     qualification      = "[{ \"code\":\"RN\", \"id\":\"3939393\", \"status\":\"active\", \"period_start\":\"20230204\", \"msp_id\":\"90999339\"} ]",
     endorser_data      = "CPN.00063660.BC.PRS##CPN.00099999.BC.PRS"
   }
