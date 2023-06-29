@@ -1,6 +1,7 @@
 resource "keycloak_openid_client" "client_smile" {
   realm_id                     = data.keycloak_realm.realm.id
   client_id                    = var.client_smile.id
+  client_secret                = var.client_smile.client_secret
   name                         = "smile-cdr "
   description                  = "Smile CDR FHIR server"
   enabled                      = true
