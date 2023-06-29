@@ -41,6 +41,19 @@ variable "client_app2" {
   description = "Patient App configuration"
 }
 
+variable "client_smile" {
+  type = object({
+    id              = optional(string, "smile-cdr")
+    valid_redirects = list(string)
+    web_origins     = list(string)
+    base_url        = string
+    login_theme     = optional(string, "keycloak")
+    client_secret   = string
+
+  })
+  description = "Smile CDR Client configuration"
+}
+
 variable "keycloak_idp_zed_azure_ad" {
   type = object({
     alias         = optional(string, "zedwerks-idp")
