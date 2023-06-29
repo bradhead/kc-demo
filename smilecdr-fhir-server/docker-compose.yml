@@ -15,7 +15,7 @@ services:
       - db:/home/smile/smilecdr/database
       - mq:/home/smile/smilecdr/activemq-data
       - tmp:/home/smile/smilecdr/tmp
-    restart: "unless-stopeed "
+    restart: "unless-stopped "
 volumes:
   db:
   log:
