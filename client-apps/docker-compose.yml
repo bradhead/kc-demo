@@ -33,3 +33,22 @@ services:
       - "ENABLE_HTTPS=false"
       - "SKIP_ISSUER_CHECK=false"
       - "STRICT_DISCOVERY_DOCUMENT_VALIDATION=true"
+
+  provider-app-smile:
+    container_name: provider-app-smile
+    build:
+      context: https://github.com/bradhead/swiss-on-fhir.git#provider    # This adds support for SMART required 'aud'
+    ports:
+      - "4200:80"
+    environment:
+      - "CLIENT_ID=provider-app"
+      - "FHIRENDPOINT_URI=http://localhost:8000/"  
+      - "REDIRECT_URI=http://localhost:4200"
+      - "ISSUER_URI=http://localhost:9200"
+      - "AUDIENCE=provider-app"
+      - "LOGOUT_URI="
+      - "SCOPES=openid fhirUser profile"
+      - "ENABLE_HTTPS=false"
+      - "SKIP_ISSUER_CHECK=false"
+      - "STRICT_DISCOVERY_DOCUMENT_VALIDATION=true"
+
