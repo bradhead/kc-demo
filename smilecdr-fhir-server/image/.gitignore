@@ -1,4 +1,4 @@
-docker-image/*.tar
+*.tar
 runtime*
 .DS_Store
 .DS_*
