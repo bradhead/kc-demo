@@ -1,8 +1,11 @@
 version: "3.8"
 services:
   smilecdr:
-    container_name: smilecdr
-    image: smilecdr:latest
+    container_name: smilecdr-2023.05.R02
+    image: smilecdr:2023.05.R02
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
       - "8001:8001"
@@ -11,11 +14,11 @@ services:
       - "9200:9200"
       - "9201:9201"
     volumes:
-      - log:/home/smile/smilecdr/log
       - db:/home/smile/smilecdr/database
+      - log:/home/smile/smilecdr/log
       - mq:/home/smile/smilecdr/activemq-data
       - tmp:/home/smile/smilecdr/tmp
-    restart: "unless-stopped "
+    restart: "unless-stopped"
 volumes:
   db:
   log:
