@@ -1,11 +1,8 @@
 version: "3.8"
 services:
   smilecdr:
-    container_name: smilecdr-2023.05.R02
-    image: smilecdr:2023.05.R02
- #   build:
-   #   context: .
-  #    dockerfile: Dockerfile
+    container_name: smilecdr-2022.11.R03
+    image: smilecdr:2022.11.R03
     ports:
       - "8000:8000"
       - "8001:8001"
