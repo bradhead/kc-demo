@@ -30,7 +30,7 @@ resource "keycloak_hardcoded_attribute_identity_provider_mapper" "zed_azure_idp"
   identity_provider_alias = keycloak_oidc_identity_provider.zed_azure_ad.alias
   attribute_name          = "idp"
   attribute_value         = "AAD"
-  user_session            = false
+  user_session            = true
   extra_config = {
     syncMode = "INHERIT"
   }

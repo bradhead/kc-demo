@@ -60,4 +60,22 @@ resource "keycloak_openid_user_attribute_protocol_mapper" "client2_profile" {
   add_to_userinfo     = true
 }
 
+resource "keycloak_openid_user_session_note_protocol_mapper" "client2_idp_user_session_note_mapper" {
+  realm_id         = keycloak_openid_client.client2.realm_id
+  client_id        = keycloak_openid_client.client2.id
+  name             = "user-session-idp-mapper"
+  claim_name       = "idp"
+  claim_value_type = "String"
+  session_note     = "idp"
+}
+
+resource "keycloak_openid_user_session_note_protocol_mapper" "client2_acr_user_session_note_mapper" {
+  realm_id         = keycloak_openid_client.client2.realm_id
+  client_id        = keycloak_openid_client.client2.id
+  name             = "user-session-acr-mapper"
+  claim_name       = "acr"
+  claim_value_type = "String"
+  session_note     = "acr"
+}
+
 
