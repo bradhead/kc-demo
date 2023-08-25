@@ -51,4 +51,9 @@ services:
       - "ENABLE_HTTPS=false"
       - "SKIP_ISSUER_CHECK=false"
       - "STRICT_DISCOVERY_DOCUMENT_VALIDATION=true"
+    networks: 
+      - demo-network
 
+networks:
+  demo-network:
+    external: true
