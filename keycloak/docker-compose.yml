@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   keycloak:
-    container_name: keycloak-18.0.2-for-poc
+    container_name: keycloak
     image: quay.io/keycloak/keycloak:18.0.2-legacy
 
     ports: 
@@ -15,4 +15,9 @@ services:
       - "KEYCLOAK_IMPORT=/tmp/import/realm.json"
     volumes:
       - ./realm/:/tmp/import/
-    network_mode: "bridge"
+    networks: 
+      - demo-network
+
+networks:
+  demo-network:
+    external: true

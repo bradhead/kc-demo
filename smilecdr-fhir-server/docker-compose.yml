@@ -12,11 +12,16 @@ services:
       - "9201:9201"
     volumes:
       - smilecdr-volume:/home/smile/smilecdr
-    network_mode: "bridge"
     environment:
       - js.contextApi.clientId=smile-cdr
       - js.contextApi.clientSecret=kG3XHKcW80E4in3ftxaZnkXFTU89VBiu
-      - js.contextApi.tokenEndpoint=http://localhost:8080/auth/realms/poc/protocol/openid-connect/token
+      - js.contextApi.tokenEndpoint=http://keycloak:8080/auth/realms/poc/protocol/openid-connect/token
       - js.contextApi.scopes="openid launch context"
+    networks: 
+    - demo-network
 volumes:
   smilecdr-volume:
+
+networks:
+  demo-network:
+    external: true
