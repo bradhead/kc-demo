@@ -9,7 +9,7 @@ keycloak_environment = {
 
 keycloak_terraform_client = {
     id     = "terraform"
-    secret = "clieint-secret-goes-here"
+    secret = "client-secret-goes-here"
 }
 
 client_smart_app = {
