@@ -1,4 +1,4 @@
-# kc-idp-poc
+# kc-demo
 
 A Proof of Concept for Keycloak acting principally as an external IdP for use with FHIR Server.
 
