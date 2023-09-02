@@ -22,7 +22,8 @@ resource "keycloak_openid_client_default_scopes" "client_smile_default_scopes" {
 
   default_scopes = [
     "web-origins",
-    "profile"
+    "profile",
+    "context",
   ]
 }
 resource "keycloak_openid_client_optional_scopes" "client_smile_optional_scopes" {
